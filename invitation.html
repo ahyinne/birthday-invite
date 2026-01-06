@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Invitation</title>
+  
+  <!-- Make it responsive on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Body and background */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("background.png") center / cover no-repeat;
+      font-family: sans-serif;
+    }
+
+    /* Cassette image */
+    .cassette {
+      cursor: pointer;
+      width: 60%;           /* scales on phones */
+      max-width: 280px;     /* desktop limit */
+      transition: transform 0.25s;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .cassette:hover {
+      transform: scale(1.05);
+    }
+
+    /* Film tape image */
+    .tape {
+      display: none;
+      width: 80%;           /* scales on phones */
+      max-width: 520px;     /* desktop limit */
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Clickable cassette -->
+  <img src="cassette.png" class="cassette" onclick="openInvite()">
+
+  <!-- Film tape invitation -->
+  <img src="filmtape.png" class="tape" id="tape">
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function openInvite() {
+      // Hide cassette
+      document.querySelector(".cassette").style.display = "none";
+
+      // Show film tape
+      document.getElementById("tape").style.display = "block";
+
+      // Play music
+      const music = document.getElementById("bgMusic");
+      music.volume = 0.25;  // quiet music
+      music.play();
+    }
+  </script>
+
+</body>
+</html>
